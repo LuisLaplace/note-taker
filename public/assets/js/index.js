@@ -6,6 +6,7 @@ let newNoteBtn;
 let noteList;
 
 if (window.location.pathname === '/notes') {
+  console.log('window location is considered');
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -81,6 +82,8 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
   });
+
+  location.reload();
 };
 
 // Delete the clicked note
@@ -99,6 +102,7 @@ const handleNoteDelete = (e) => {
     getAndRenderNotes();
     renderActiveNote();
   });
+  location.reload();
 };
 
 // Sets the activeNote and displays it

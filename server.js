@@ -1,58 +1,54 @@
 const express = require('express');
 const path = require('path');
-const { clog } = require('./public/assets/js/clog'); 
-const api = require('./public/assets/Routes/index.js'); 
-const { readFromFile, readAndAppend } = require('./db/fsUtils.js'); 
-const PORT = process.env.PORT || 3001;
+const { clog } = require('./public/assets/js/clog');
+const api = require('./public/assets/Routes/index.js')
+const savedNotes= require('./db/saveNotes');
+const { title } = require('process');
+const { readFromFile, readAndAppend } = require('./db/fsUtils.js');
+const PORT = process.env.PORT||3001;
 
 const app = express();
 
 // Middleware for parsing application/json and urlencoded data
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api',api);
 
-// Serve static files
+app.use(clog);
 app.use(express.static('public'));
 
-// Custom middleware 
-app.use(clog);
 
-// API routes 
-app.use('/api', api);
-
-// Route to serve index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(path.join(__dirname, './public/'));
 });
 
-// Route to serve notes.html
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
+app.get('/notes',(req,res) =>{
+    res.sendFile(path.join(__dirname,'./public/notes.html'))
+
 });
 
-// Route to handle POST request to /notes
 app.post('/notes', (req, res) => {
     let response;
   
     // Check if there is anything in the response body
-    if (req.body) {
-        response = {
-            status: 'success',
-            data: req.body,
-        };
-        res.json(response); // Send the response object
+    if (req.body!= undefined) {
+      response = {
+        status: 'success',
+        data: req.body,
+      };
+      res.json(`The post succesfully was completed`);
     } else {
-        res.status(400).json('Request body must at least contain a product name');
+      res.json('Request body must at least contain a product name');
     }
   
-    // Log the response body to the console (optional)
-    // console.log(response.data);
+    // Log the response body to the console
+    //console.log(response.data);
 });
 
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
+         console.log(`Example app listening at http://localhost:${PORT}`);
 });
-
+    
 module.exports = app;
 

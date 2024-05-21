@@ -1,12 +1,12 @@
 const savedNotes=[
     {
-        noteTitle: "Stuff things",
-        noteText: "Bob Law"
+        noteTitle: "eat",
+        noteText: "pizza"
        
     },
     {
-        noteTitle: "Cry",
-        noteText: "Do it loudly"
+        noteTitle: "do",
+        noteText: "sleep"
     }
 ];
 

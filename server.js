@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
-const { clog } = require('./public/assets/js/clog'); // Assuming clog.js is defined correctly
-const api = require('./public/assets/Routes/index.js'); // Assuming correct path to index.js
-const { readFromFile, readAndAppend } = require('./db/fsUtils.js'); // Assuming fsUtils.js is defined correctly
+const { clog } = require('./public/assets/js/clog'); 
+const api = require('./public/assets/Routes/index.js'); 
+const { readFromFile, readAndAppend } = require('./db/fsUtils.js'); 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -14,10 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static('public'));
 
-// Custom middleware (assuming clog.js is defined correctly)
+// Custom middleware 
 app.use(clog);
 
-// API routes (assuming index.js is defined correctly)
+// API routes 
 app.use('/api', api);
 
 // Route to serve index.html

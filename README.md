@@ -33,3 +33,7 @@ Express.js
 https://github.com/LuisLaplace/note-taker
 https://luislaplace.github.io/note-taker/public/index.html
 
+![Alt Text](./public/assets/img/Screenshot%202024-05-20%20180551.png)
+![Alt Text](./public/assets/img/Screenshot%202024-05-20%20183538.png)
+![Alt Text](./public/assets/img/Screenshot%202024-05-20%20183558.png)
+![Alt Text](./public/assets/img/Screenshot%202024-05-20%20183608.png)
